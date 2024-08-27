@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Images</title>
+    <style>
+        #userContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .user {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="userContainer"></div>
+
+<script>
+// Function to fetch and display all users
+async function fetchAllUsers() {
+    try {
+        const response = await fetch('http://localhost:3000/base/getAll');
+        const users = await response.json();
+
+        if (response.ok) {
+            const userContainer = document.getElementById('userContainer');
+            userContainer.innerHTML = ''; // Clear existing content
+
+            // Loop through users and create HTML elements for each
+            users.forEach(user => {
+                const userDiv = document.createElement('div');
+                userDiv.classList.add('user');
+                userDiv.innerHTML = `
+                    <h2>${user.name}</h2>
+                    <p>Age: ${user.age}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Address: ${user.address}</p>
+                    <img src="${user.image}" alt="${user.name}'s image" />
+                `;
+                userContainer.appendChild(userDiv);
+            });
+        } else {
+          
+            console.error(users.error);
+        }
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
+}
+
+// Call the function to fetch all users when the page loads
+fetchAllUsers();
+</script>
+
+</body>
+</html>
