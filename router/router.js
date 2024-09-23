@@ -42,5 +42,4 @@ route.get("/getDistrictByStateId/:stateId",districtController.getdistrictById);
 
 
 
-
 module.exports=route;
