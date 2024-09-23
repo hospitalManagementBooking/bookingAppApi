@@ -22,11 +22,12 @@ route.post("/adduser", upload.single('image'), userController.addUser);
 route.get("/getAll",userController.getAllUsers);
 
 
+//Country
 route.post("/addcountry",countryController.addCountry);
 
 route.get("/getAllCountry",countryController.getAllCountry);
 
-
+// State
 route.post("/addstate",stateController.addState);
 
 route.get("/getAllState",stateController.getAllState);
@@ -34,7 +35,7 @@ route.get("/getAllState",stateController.getAllState);
 route.get("/getStateByCountryId/:countryId",stateController.getStatesByCountryId);
 
 
-// route.post("/adddistrict",districtController.insertDistricts);
+// District
 
 route.get("/getAllDistrict",districtController.getAlldistrict);
 route.get("/getDistrictByStateId/:stateId",districtController.getdistrictById);
