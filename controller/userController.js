@@ -1,4 +1,4 @@
-const UserModel = require('../model/todo');
+const UserModel = require('../model/User');
 
 const addUser = async (req, res) => {
     try {
